@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Toon HTML Assignment 5
+    </title>
+</head> 
+<body>
+    <h1>
+        Cartoon game by Gage Sommerville
+    </h1>
+
+<form>
+<label for="secretToon">That's all folks</label>
+<input type="password" id="secretToon" value="Porky Pig"> <br>
+
+
+<label for="guessToon">Guess the toon</label>
+<input type="text" id="guessToon"> <br>
+
+
+<input type="button" value="Check the guess" onclick="checkToon()">
+</form>
+
+
+<div id="result">Yahoo: 0 | Darn: 0</div>
+
+
+<script>
+let yahoo = 0;
+let darn = 0;
+
+
+function checkToon(){
+let toon = document.getElementById("secretToon").value;
+let guess = document.getElementById("guessToon").value;
+
+
+if(guess === toon){
+yahoo++;
+alert("You got it");
+} 
+
+else {
+darn++;
+alert("Missed me");
+}
+
+
+document.getElementById("result").innerHTML = "Yahoo: " + yahoo + " | Darn: " + darn;
+}
+</script>
+</script>
+
+</body>
+</html> 
