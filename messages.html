@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Cost of Sending Message Cost-Per-Letter
+        </title>
+    </head>
+ 
+<body>
+
+<h1>Gage Sommerville message cost</h1>
+
+<h2>Getting input</h2>
+
+<form>
+    <label for="standardCharge">Enter cost per letter</label>
+    <input type="number" id="standardCharge" value="0.50" step="2"><br>
+
+    <label for="discountLength">Enter the length needed for the discount</label>
+    <input type="number" id="discountLength" value="20"><br>
+
+    <label for="discountCharge">Enter the discount rate</label>
+    <input type="number" id="discountCharge" value="0.25" step="2"><br>
+
+    <input type="button" value="Show total" onclick="amounts()">
+</form>
+
+
+<div id="myResults">Totals will appear here</div>
+
+<script> 
+
+    function amounts() {
+        const standardCharge = parseFloat(document.getElementById("standardCharge").value);
+        const discountPosition = parseInt(document.getElementById("discountLength").value, 10);
+        const discountCharge = parseFloat(document.getElementById("discountCharge").value);
+
+        let totalCosts = "";
+        for (let size = discountPosition - 3; size <= discountPosition + 3; size++) {
+        const atStd = Math.min(size, discountPosition);
+        const above = Math.max(0, size - discountPosition);
+        const cost = atStd * standardCharge + above * discountCharge;
+        totalCosts += `length ${size} is ${cost.toFixed(2)}; `;
+        }
+
+        document.getElementById("myResults").innerHTML = `Totals are: ${totalCosts}`;
+    }
+</script>
+
+</body>
+</html> 
