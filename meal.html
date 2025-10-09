@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Using Check Boxes</title>
+</head>
+<body>
+<h1>Gage Sommerville plans a meal</h1>
+
+<h2>Getting input</h2>
+
+<form>
+
+    <label><input type="checkbox" id="serveSalad" value="True"> Serve salad</label><br>
+    <label><input type="checkbox" id="makeStew" value="True"> Make stew</label><br>
+    <label><input type="checkbox" id="chocDessert" value="False"> Chocolate for desert</label><br>
+
+    <input type="button" value="Meal Choices" onclick="choices()">
+</form>
+
+<div id="result">(meal object will appear here)</div>
+
+<script> 
+
+    let my_meal = {};
+
+    function choices() {
+        my_meal = {}; 
+        my_meal.salad = document.getElementById("serveSalad").checked;
+        my_meal.stew = document.getElementById("makeStew").checked;
+        my_meal.chocolate = document.getElementById("chocDessert").checked;
+
+        let mealtext = "Salad: " + my_meal.salad + ", Stew: " + my_meal.stew + ", Chocolate: " + my_meal.chocolate;
+
+        document.getElementById("result").innerHTML = mealtext;
+    }
+</script>
+
+</body>
+</html> 
