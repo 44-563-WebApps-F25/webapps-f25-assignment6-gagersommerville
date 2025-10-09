@@ -28,6 +28,25 @@
 
 <div id="myResults">Totals will appear here</div>
 
+<form>
+  <label>
+    <input type="radio" name="op" id="op_times" value="times" onclick="chooseOp()" checked>
+    product
+  </label><br>
+
+  <label>
+    <input type="radio" name="op" id="op_add" value="add" onclick="chooseOp()">
+    sum
+  </label><br>
+
+  <label>
+    <input type="radio" name="op" id="op_mod" value="mod" onclick="chooseOp()">
+    mod
+  </label>
+</form>
+
+<div id="opResult">Operation result will appear here</div>
+
 <script> 
 
     function amounts() {
@@ -45,6 +64,32 @@
 
         document.getElementById("myResults").innerHTML = `Totals are: ${totalCosts}`;
     }
+
+    function chooseOp() {
+
+        let price = parseFloat(document.getElementById("standardCharge").value);
+        let breakAt = parseFloat(document.getElementById("discountLength").value);
+
+        let result, symbol;
+
+        if (document.getElementById("op_times").checked) {
+            result = breakAt * price;
+            symbol = "*";
+        } 
+        else if (document.getElementById("op_add").checked) {
+            result = breakAt + price;
+            symbol = "+";
+        } 
+        else if (document.getElementById("op_mod").checked) {
+            result = breakAt % price;
+            symbol = "%";
+        }
+
+        result = parseFloat(result.toFixed(2));
+
+        document.getElementById("opResult").innerHTML = breakAt + " " + symbol + " " + price + " is " + result;
+}
+
 </script>
 
 </body>
